@@ -1,0 +1,14 @@
+ .navbar {
+ margin-left: 100px ; margin-right: 100px; display: flex; justify-content: center; align-items: center; padding: 5px 5px 5px 5px;
+}
+
+header {
+    background-color:
+    display: block;
+    background-size: cover;
+   
+}
+
+.nav-logo {
+    border: 5px color(srgb rgb(108, 34, 34) rgb(0, 255, 0) blue); border-radius: 10px; border-color: black;
+}
