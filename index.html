@@ -1,38 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AHHHH</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Proyek - Dev Daily</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. Top Bar -->
-    <header class="navbar">
-        <div class="nav-logo">FLORIST SHOP</div>
-        <br>
-        <nav class="nav-links">...</nav>
-    </header>
+  <!-- Header / Navigasi -->
+  <header>
+    <div class="logo">MyPortfolio</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#projects">Proyek</a></li>
+        <li><a href="#about">Tentang</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- 2. Core Page Content -->
-    <main>
-        <section class="hero-section">
-            <h2>Welcome to Florist Shop</h2>
-            <p>Fresh flowers delivered to your door.</p>
-        </section>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>Selamat Datang di Hub Proyek</h1>
+    <p>Kumpulan eksperimen dan mini-project hasil ngoding harian.</p>
+  </section>
 
-        <section class="products-section">
-            <h2>Our Best Sellers</h2>
-            <!-- Product Cards -->
-        </section>
-    </main>
+  <!-- Main Content: Tempat nampilin data dari JSON -->
+  <main>
+    <section id="projects" class="project-section">
+      <h2>Daftar Proyek</h2>
+      
+      <!-- Container yang nanti diisi data dari JSON pake JS -->
+      <div id="project-container" class="project-grid">
+        <!-- Tempat data JSON dirender -->
+        <p class="loading">Memuat data proyek...</p>
+      </div>
+    </section>
+  </main>
 
-    <!-- 3. Bottom Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">...</div>
-    </footer>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Dibuat dengan HTML, CSS, & JS.</p>
+  </footer>
 
-<script src="index.js"></script>
+  <!-- Script JS buat fetch data.json -->
+  <script src="script.js"></script>
 </body>
 </html>
