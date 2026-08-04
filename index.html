@@ -29,22 +29,46 @@
   <!-- Main Content: Tempat nampilin data dari JSON -->
   <main>
     <section id="projects" class="project-section">
-      <h2>Daftar Proyek</h2>
+      <div class="section-header">
+        <h2>Daftar Proyek</h2>
+        
+        <!-- Filter Kategori (Fitur Baru) -->
+        <div class="filter-container">
+          <button class="filter-btn active" data-category="all">Semua</button>
+          <button class="filter-btn" data-category="web">Web</button>
+          <button class="filter-btn" data-category="tools">Tools/CLI</button>
+        </div>
+      </div>
       
-      <!-- Container yang nanti diisi data dari JSON pake JS -->
+      <!-- Container yang diisi data dari JSON pake JS -->
       <div id="project-container" class="project-grid">
-        <!-- Tempat data JSON dirender -->
         <p class="loading">Memuat data proyek...</p>
       </div>
     </section>
+
+    <!-- Section Tentang / About (Fitur Baru) -->
+    <section id="about" class="about-section">
+      <h2>Tentang Proyek Ini</h2>
+      <p>Web ini dibuat secara independen menggunakan HTML, CSS, Vanilla JavaScript, dan JSON lokal tanpa butuh backend/database external.</p>
+    </section>
   </main>
+
+  <!-- Modal Detail Proyek (Fitur Baru) -->
+  <div id="project-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3 id="modal-title">Judul Proyek</h3>
+      <p id="modal-description">Deskripsi lengkap proyek akan muncul di sini.</p>
+      <div id="modal-tech" class="tech-stack"></div>
+      <a id="modal-link" href="#" target="_blank" class="btn-link">Lihat Repo / Demo</a>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2026 Dibuat dengan HTML, CSS, & JS.</p>
   </footer>
 
-  <!-- Script JS buat fetch data.json -->
   <script src="script.js"></script>
 </body>
 </html>
