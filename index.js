@@ -148,4 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Arahkan pengunjung ke halaman detail.html bawa ID proyek
+card.addEventListener('click', () => {
+  window.location.href = `detail.html?id=${item.id}`;
+});
+
 ///Trying Reaacttt.js
