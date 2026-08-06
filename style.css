@@ -290,3 +290,44 @@ footer {
 .btn-link:hover {
   background-color: var(--primary-hover);
 }
+
+/* ==========================================
+   9. DETAIL PAGE STYLES (detail.html)
+   ========================================== */
+.detail-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 2.5rem;
+}
+
+.detail-header h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.detail-body h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+}
+
+.detail-body p {
+  white-space: pre-line; /* Menjaga format paragraf & baris baru dari JSON */
+}
+
+/* Responsif untuk layar HP */
+@media (max-width: 640px) {
+  .detail-container {
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  .detail-header h1 {
+    font-size: 1.75rem;
+  }
+}
