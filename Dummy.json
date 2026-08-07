@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Daily Micro-CLI Tool",
+    "category": "tools",
+    "description": "Tool command-line sederhana berbasis Node.js untuk bantu kelola catatan harian.",
+    "longDescription": "Daily Micro-CLI Tool adalah aplikasi berbasis terminal yang dibuat menggunakan Node.js. Aplikasi ini dirancang untuk membantu produktivitas pengembang harian dengan menyediakan fitur manajemen tugas cepat, pencatatan otomatis, dan pengubah format teks sederhana langsung dari terminal tanpa perlu membuka browser.",
+    "tech": ["Node.js", "JavaScript", "CLI"],
+    "link": "https://github.com/username/micro-cli-tool"
+  },
+  {
+    "id": "2",
+    "title": "UI Component Library",
+    "category": "web",
+    "description": "Koleksi komponen UI web berbasis HTML & CSS modern tanpa framework.",
+    "longDescription": "Kumpulan komponen antarmuka pengguna (UI) yang dapat digunakan kembali. Dibuat murni menggunakan Vanilla CSS dan HTML5 sembari menerapkan prinsip desain modern seperti Glassmorphism, CSS Custom Properties (Variables), dan tata letak responsif menggunakan CSS Grid & Flexbox.",
+    "tech": ["HTML5", "CSS3", "Responsive"],
+    "link": "https://github.com/username/ui-component-lib"
+  },
+  {
+    "id": "3",
+    "title": "Local File Converter",
+    "category": "tools",
+    "description": "Skrip pembantu otomatisasi untuk mengompres dan konversi format gambar lokal.",
+    "longDescription": "Skrip otomatisasi berbasis Node.js yang berfungsi untuk memindai folder lokal, mendeteksi file berformat PNG/JPG, lalu mengompres ukurannya dan mengonversinya secara masal menjadi format WebP yang ramah web.",
+    "tech": ["Node.js", "Automation"],
+    "link": "https://github.com/username/local-file-converter"
+  },
+  {
+    "id": "4",
+    "title": "Personal Portfolio Dashboard",
+    "category": "web",
+    "description": "Web portofolio statis interaktif yang memanfaatkan file JSON lokal sebagai database.",
+    "longDescription": "Situs web portofolio statis yang fleksibel dan independen. Menggunakan arsitektur Jamstack tanpa server/backend terpisah, memanfaatkan Vanilla JavaScript Fetch API untuk membaca data secara dinamis dari file JSON lokal serta dilengkapi fitur filter kategori dan halaman detail.",
+    "tech": ["HTML5", "CSS3", "JavaScript", "JSON"],
+    "link": "https://github.com/username/portfolio-dashboard"
+  }
+]
