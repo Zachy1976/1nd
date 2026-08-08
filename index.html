@@ -24,6 +24,22 @@
   <section id="home" class="hero">
     <h1>Selamat Datang di Hub Proyek</h1>
     <p>Kumpulan eksperimen dan mini-project hasil ngoding harian.</p>
+
+    <!-- Stat Banner (Fitur Baru) -->
+    <div class="stats-container" style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
+      <div class="stat-item">
+        <span class="stat-number" id="stat-total">4</span>
+        <span class="stat-label" style="display: block; font-size: 0.8rem; color: var(--text-muted);">Proyek Rilis</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label" style="display: block; font-size: 0.8rem; color: var(--text-muted);">Vanilla Web</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" style="color: #10b981;">● Active</span>
+        <span class="stat-label" style="display: block; font-size: 0.8rem; color: var(--text-muted);">Daily Streak</span>
+      </div>
+    </div>
   </section>
 
   <!-- Main Content: Tempat nampilin data dari JSON -->
@@ -32,11 +48,18 @@
       <div class="section-header">
         <h2>Daftar Proyek</h2>
         
-        <!-- Filter Kategori (Fitur Baru) -->
-        <div class="filter-container">
-          <button class="filter-btn active" data-category="all">Semua</button>
-          <button class="filter-btn" data-category="web">Web</button>
-          <button class="filter-btn" data-category="tools">Tools/CLI</button>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <!-- Search Bar (Fitur Baru) -->
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="Cari proyek..." style="background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main); padding: 0.4rem 0.8rem; border-radius: 0.5rem; font-size: 0.85rem; outline: none;">
+          </div>
+
+          <!-- Filter Kategori -->
+          <div class="filter-container">
+            <button class="filter-btn active" data-category="all">Semua</button>
+            <button class="filter-btn" data-category="web">Web</button>
+            <button class="filter-btn" data-category="tools">Tools/CLI</button>
+          </div>
         </div>
       </div>
       
@@ -46,23 +69,12 @@
       </div>
     </section>
 
-    <!-- Section Tentang / About (Fitur Baru) -->
+    <!-- Section Tentang / About -->
     <section id="about" class="about-section">
       <h2>Tentang Proyek Ini</h2>
       <p>Web ini dibuat secara independen menggunakan HTML, CSS, Vanilla JavaScript, dan JSON lokal tanpa butuh backend/database external.</p>
     </section>
   </main>
-
-  <!-- Modal Detail Proyek (Fitur Baru) -->
-  <div id="project-modal" class="modal hidden">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <h3 id="modal-title">Judul Proyek</h3>
-      <p id="modal-description">Deskripsi lengkap proyek akan muncul di sini.</p>
-      <div id="modal-tech" class="tech-stack"></div>
-      <a id="modal-link" href="#" target="_blank" class="btn-link">Lihat Repo / Demo</a>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer>
