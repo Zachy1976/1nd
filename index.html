@@ -49,10 +49,16 @@
         <h2>Daftar Proyek</h2>
         
         <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-          <!-- Search Bar (Fitur Baru) -->
-          <div class="search-box">
-            <input type="text" id="search-input" placeholder="Cari proyek..." style="background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main); padding: 0.4rem 0.8rem; border-radius: 0.5rem; font-size: 0.85rem; outline: none;">
-          </div>
+        <!-- Search Box dengan Ikon -->
+<div class="search-box">
+  <span class="search-icon">🔍</span>
+  <input 
+    type="text" 
+    id="search-input" 
+    placeholder="Cari proyek atau teknologi..." 
+    autocomplete="off"
+  >
+</div>
 
           <!-- Filter Kategori -->
           <div class="filter-container">
