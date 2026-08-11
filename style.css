@@ -435,3 +435,62 @@ body.light-theme {
   visibility: hidden;
   transform: translateY(10px);
 }
+
+/* ==========================================
+   11. BADGE COUNT STYLES
+   ========================================== */
+.badge-count {
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.75rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.4rem;
+  margin-left: 0.3rem;
+}
+
+.filter-btn.active .badge-count {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================
+   12. SKELETON LOADING EFFECT
+   ========================================== */
+.skeleton-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.85rem;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skeleton-line {
+  height: 14px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 37%,
+    rgba(255, 255, 255, 0.03) 63%
+  );
+  background-size: 400% 100%;
+  border-radius: 4px;
+  animation: skeleton-shimmer 1.4s ease infinite;
+}
+
+.skeleton-title {
+  height: 22px;
+  width: 60%;
+}
+
+.skeleton-text {
+  width: 90%;
+}
+
+.skeleton-text-short {
+  width: 40%;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
