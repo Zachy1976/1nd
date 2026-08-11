@@ -69,11 +69,18 @@
 </div>
 
           <!-- Filter Kategori -->
-          <div class="filter-container">
-            <button class="filter-btn active" data-category="all">Semua</button>
-            <button class="filter-btn" data-category="web">Web</button>
-            <button class="filter-btn" data-category="tools">Tools/CLI</button>
-          </div>
+         <!-- Filter Kategori dengan Counter (Fitur 1) -->
+<div class="filter-container">
+  <button class="filter-btn active" data-category="all">
+    Semua <span id="count-all" class="badge-count">0</span>
+  </button>
+  <button class="filter-btn" data-category="web">
+    Web <span id="count-web" class="badge-count">0</span>
+  </button>
+  <button class="filter-btn" data-category="tools">
+    Tools/CLI <span id="count-tools" class="badge-count">0</span>
+  </button>
+</div>
         </div>
       </div>
       
