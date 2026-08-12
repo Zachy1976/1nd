@@ -1,5 +1,8 @@
+// ==========================================
+// SCRIPT DETAL PROYEK (detail.html)
+// ==========================================
+
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Ambil ID proyek dari URL (misal: detail.html?id=1)
   const urlParams = new URLSearchParams(window.location.search);
   const projectId = urlParams.get('id');
 
@@ -7,49 +10,75 @@ document.addEventListener('DOMContentLoaded', () => {
   const descEl = document.getElementById('project-description');
   const techEl = document.getElementById('project-tech');
   const linkEl = document.getElementById('project-link');
+  const toastEl = document.getElementById('toast');
 
   if (!projectId) {
-    titleEl.textContent = 'Proyek Tidak Ditemukan';
-    descEl.textContent = 'Parameter ID tidak ada pada URL.';
+    if (titleEl) titleEl.textContent = 'Proyek Tidak Ditemukan';
+    if (descEl) descEl.textContent = 'Parameter ID tidak ada pada URL.';
     return;
   }
 
-  // 2. Fetch data dari data.json
+  // Fetch Data dari JSON
   fetch('./data.json')
     .then((res) => {
       if (!res.ok) throw new Error('Gagal mengambil data');
       return res.json();
     })
     .then((projects) => {
-      // Cari proyek yang ID-nya cocok
       const project = projects.find((p) => String(p.id) === String(projectId));
 
       if (!project) {
-        titleEl.textContent = 'Proyek Tidak Ditemukan';
-        descEl.textContent = 'Data proyek dengan ID ini tidak ada di JSON.';
+        if (titleEl) titleEl.textContent = 'Proyek Tidak Ditemukan';
+        if (descEl) descEl.textContent = 'Data proyek tidak cocok dengan ID ini.';
         return;
       }
 
-      // Render data ke halaman detail.html
+      // Render data
       document.title = `${project.title} - Detail Proyek`;
-      titleEl.textContent = project.title;
-      descEl.textContent = project.longDescription || project.description;
-      linkEl.href = project.link || '#';
+      if (titleEl) titleEl.textContent = project.title;
+      if (descEl) descEl.textContent = project.longDescription || project.description;
+      if (linkEl) linkEl.href = project.link || '#';
 
-      // Render tech stack
-      techEl.innerHTML = '';
-      if (project.tech && Array.isArray(project.tech)) {
-        project.tech.forEach((t) => {
-          const badge = document.createElement('span');
-          badge.textContent = t;
-          badge.style.cssText = 'background: var(--border-color); color: var(--text-main); padding: 0.3rem 0.7rem; border-radius: 0.25rem; font-size: 0.85rem;';
-          techEl.appendChild(badge);
-        });
+      // Render Tech Badges
+      if (techEl) {
+        techEl.innerHTML = '';
+        if (project.tech && Array.isArray(project.tech)) {
+          project.tech.forEach((t) => {
+            const badge = document.createElement('span');
+            badge.textContent = t;
+            badge.style.cssText = 'background: var(--card-border); color: var(--text-main); padding: 0.3rem 0.7rem; border-radius: 0.4rem; font-size: 0.85rem; border: 1px solid var(--card-border);';
+            techEl.appendChild(badge);
+          });
+        }
       }
+
+      // FITUR 1: Tombol Copy Link ke Clipboard
+      setupCopyLink(project.link);
     })
     .catch((err) => {
       console.error(err);
-      titleEl.textContent = 'Terjadi Kesalahan';
-      descEl.textContent = 'Gagal memuat data dari server lokal.';
+      if (titleEl) titleEl.textContent = 'Terjadi Kesalahan';
     });
+
+  // Logika Copy Link + Toast Notification
+  function setupCopyLink(linkUrl) {
+    if (!linkEl) return;
+
+    // Tambah event listener klik kanan atau bikin tombol khusus
+    linkEl.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      navigator.clipboard.writeText(linkUrl || window.location.href);
+      showToast('Link repo berhasil disalin! 📋');
+    });
+  }
+
+  function showToast(message) {
+    if (!toastEl) return;
+    toastEl.textContent = message;
+    toastEl.classList.remove('hidden');
+
+    setTimeout(() => {
+      toastEl.classList.add('hidden');
+    }, 2500);
+  }
 });
