@@ -82,3 +82,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2500);
   }
 });
+
+
+// FITUR 1A: Indicator Scroll Progress Bar
+  const progressBar = document.getElementById('read-progress');
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + '%';
+    });
+  }
+
+  // FITUR 1B: Estimasi Waktu Baca (Dipanggil setelah deskripsi di-render)
+  function calculateReadTime(text) {
+    const wordsPerMinute = 200; // Rata-rata kecepatan membaca
+    const words = text.trim().split(/\s+/).length;
+    const readTime = Math.ceil(words / wordsPerMinute);
+    
+    const readTimeEl = document.createElement('span');
+    readTimeEl.style.cssText = 'font-size: 0.8rem; color: var(--text-muted); display: block; margin-top: 0.25rem;';
+    readTimeEl.textContent = `⏱️ Est. waktu baca: ${readTime} min`;
+    
+    if (descEl && descEl.parentElement) {
+      descEl.parentElement.insertBefore(readTimeEl, descEl);
+    }
+  }
+  
+  // Panggil calculateReadTime(project.longDescription) pas data beres di-fetch!
