@@ -115,3 +115,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// FITUR 2: Sorting Logic
+  const sortSelect = document.getElementById('sort-select');
+  let currentSort = 'default';
+
+  if (sortSelect) {
+    sortSelect.addEventListener('change', (e) => {
+      currentSort = e.target.value;
+      applyFiltersAndRender();
+    });
+  }
+
+  // Di dalam fungsi applyFiltersAndRender():
+  // (Tambahkan bagian ini sebelum memanggil renderProjects(filtered))
+  if (currentSort === 'asc') {
+    filtered.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (currentSort === 'desc') {
+    filtered.sort((a, b) => b.title.localeCompare(a.title));
+  }
