@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // FITUR 1: Tombol Copy Link ke Clipboard
+      // Tombol Copy Link ke Clipboard
       setupCopyLink(project.link);
     })
     .catch((err) => {
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// FITUR 1A: Indicator Scroll Progress Bar
+// Indicator Scroll Progress Bar
   const progressBar = document.getElementById('read-progress');
   if (progressBar) {
     window.addEventListener('scroll', () => {
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // FITUR 1B: Estimasi Waktu Baca (Dipanggil setelah deskripsi di-render)
+  // Estimasi Waktu Baca (Dipanggil setelah deskripsi di-render)
   function calculateReadTime(text) {
     const wordsPerMinute = 200; // Rata-rata kecepatan membaca
     const words = text.trim().split(/\s+/).length;
@@ -111,3 +111,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   // Panggil calculateReadTime(project.longDescription) pas data beres di-fetch!
+
+// Keyboard Shortcut (Tekan 'Esc' atau 'Panah Kiri' untuk Kembali)
+  document.addEventListener('keydown', (e) => {
+    // Jalankan hanya jika user tidak sedang mengetik di input/textarea
+    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+      if (e.key === 'Escape' || e.key === 'ArrowLeft') {
+        window.location.href = 'index.html';
+      }
+    }
+  });
+
+  // Opsional: Tampilkan hint kecil di dekat tombol "Kembali"
+  const backLink = document.querySelector('header nav a');
+  if (backLink) {
+    backLink.innerHTML += ' <kbd style="font-size: 0.7rem; background: var(--card-border); padding: 0.1rem 0.3rem; border-radius: 0.2rem; color: var(--text-muted);">ESC</kbd>';
+  }
