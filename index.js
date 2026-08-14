@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// FITUR 2: Sorting Logic
+// FITUR 6: Sorting Logic
   const sortSelect = document.getElementById('sort-select');
   let currentSort = 'default';
 
@@ -134,3 +134,32 @@ document.addEventListener('DOMContentLoaded', () => {
   } else if (currentSort === 'desc') {
     filtered.sort((a, b) => b.title.localeCompare(a.title));
   }
+
+// FITUR 7: Tombol Quick Share di Setiap Kartu
+const shareBtn = document.createElement('button');
+shareBtn.innerHTML = '🔗 Share';
+shareBtn.style.cssText = 'background: transparent; border: 1px solid var(--card-border); color: var(--text-muted); padding: 0.2rem 0.5rem; border-radius: 0.3rem; font-size: 0.75rem; cursor: pointer; transition: all 0.2s ease;';
+
+shareBtn.addEventListener('click', (e) => {
+  e.stopPropagation(); // Mencegah pemicu event klik kartu (pindah halaman)
+  
+  const detailUrl = `${window.location.origin}${window.location.pathname.replace('index.html', '')}detail.html?id=${item.id}`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: item.title,
+      text: item.description,
+      url: detailUrl
+    }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(detailUrl);
+    shareBtn.innerHTML = '✅ Copied!';
+    setTimeout(() => { shareBtn.innerHTML = '🔗 Share'; }, 2000);
+  }
+});
+
+// Masukkan tombol share ke footer kartu di dalam render
+const cardFooter = card.querySelector('div');
+if (cardFooter) {
+  cardFooter.appendChild(shareBtn);
+}
