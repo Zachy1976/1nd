@@ -127,3 +127,42 @@ document.addEventListener('DOMContentLoaded', () => {
   if (backLink) {
     backLink.innerHTML += ' <kbd style="font-size: 0.7rem; background: var(--card-border); padding: 0.1rem 0.3rem; border-radius: 0.2rem; color: var(--text-muted);">ESC</kbd>';
   }
+
+// Text-to-Speech (TTS) di detail.js
+  const ttsBtn = document.getElementById('tts-btn');
+  let isSpeaking = false;
+  
+  if (ttsBtn && 'speechSynthesis' in window) {
+    ttsBtn.addEventListener('click', () => {
+      if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        ttsBtn.querySelector('span').textContent = 'Dengarkan';
+        ttsBtn.style.borderColor = 'var(--card-border)';
+        return;
+      }
+
+      const textToRead = descEl ? descEl.textContent : '';
+      if (!textToRead) return;
+
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      utterance.lang = 'id-ID'; // Bahasa Indonesia
+      utterance.rate = 1.0;
+
+      utterance.onstart = () => {
+        isSpeaking = true;
+        ttsBtn.querySelector('span').textContent = 'Stop Audio';
+        ttsBtn.style.borderColor = 'var(--primary-color)';
+      };
+
+      utterance.onend = () => {
+        isSpeaking = false;
+        ttsBtn.querySelector('span').textContent = 'Dengarkan';
+        ttsBtn.style.borderColor = 'var(--card-border)';
+      };
+
+      window.speechSynthesis.speak(utterance);
+    });
+  } else if (ttsBtn) {
+    ttsBtn.style.display = 'none'; // Sembunyikan kalau browser ga support
+  }
