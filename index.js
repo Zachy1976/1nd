@@ -163,3 +163,32 @@ const cardFooter = card.querySelector('div');
 if (cardFooter) {
   cardFooter.appendChild(shareBtn);
 }
+
+// Dynamic Empty State di index.js
+  if (projects.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
+        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🔍</div>
+        <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">Proyek Tidak Ditemukan</h3>
+        <p style="font-size: 0.9rem; margin-bottom: 1.25rem;">Coba cari kata kunci lain atau reset filter kamu.</p>
+        <button id="reset-search-btn" style="background: var(--primary-color); color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.85rem;">
+          Reset Pencarian
+        </button>
+      </div>
+    `;
+
+    const resetBtn = document.getElementById('reset-search-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        currentCategory = 'all';
+        // Reset class active tombol filter
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        const allBtn = document.querySelector('.filter-btn[data-category="all"]');
+        if (allBtn) allBtn.classList.add('active');
+        
+        applyFiltersAndRender();
+      });
+    }
+    return;
+  }
