@@ -229,6 +229,32 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
       currentCategory = btn.getAttribute('data-category');
       applyFiltersAndRender();
+
+      // Tambahkan listener modal di dalam renderProjects
+const previewBtn = document.createElement('button');
+previewBtn.innerHTML = '💻 Preview';
+previewBtn.style.cssText = 'background: transparent; border: 1px solid var(--card-border); color: var(--text-muted); padding: 0.2rem 0.5rem; border-radius: 0.3rem; font-size: 0.75rem; cursor: pointer;';
+
+previewBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const modal = document.getElementById('code-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalCode = document.getElementById('modal-code');
+  
+  if (modal && modalTitle && modalCode) {
+    modalTitle.textContent = item.title;
+    modalCode.textContent = `// ID: ${item.id}\n// Stack: ${item.tech ? item.tech.join(', ') : 'JS'}\nconsole.log("Menjalankan ${item.title}...");`;
+    modal.classList.remove('hidden');
+  }
+});
+
+// Event listener close modal (ditaruh di luar renderProjects / saat DOMContentLoaded)
+const closeModalBtn = document.getElementById('close-modal-btn');
+if (closeModalBtn) {
+  closeModalBtn.addEventListener('click', () => {
+    document.getElementById('code-modal')?.classList.add('hidden');
+  });
+}
     });
   });
 });
