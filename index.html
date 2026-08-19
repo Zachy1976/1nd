@@ -35,6 +35,16 @@
 
     <!-- Stat Banner (Fitur Baru) -->
     <div class="stats-container" style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
+      <!-- FITUR 2: Target Progress Bar -->
+<div style="max-width: 400px; margin: 1.5rem auto 0; text-align: center;">
+  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.3rem;">
+    <span>Target Harian Proyek</span>
+    <span id="target-text">0 / 10 Proyek</span>
+  </div>
+  <div style="background: var(--card-border); border-radius: 1rem; height: 8px; overflow: hidden;">
+    <div id="target-progress-bar" style="background: var(--primary-color); height: 100%; width: 0%; transition: width 0.5s ease;"></div>
+  </div>
+</div>
       <div class="stat-item">
         <span class="stat-number" id="stat-total">4</span>
         <span class="stat-label" style="display: block; font-size: 0.8rem; color: var(--text-muted);">Proyek Rilis</span>
