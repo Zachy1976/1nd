@@ -67,7 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. Fetch Data JSON
   fetch('./data.json')
-    .then((res) => {
+    .then((res) => { 
+      const targetGoal = 10; // Target total proyek
+      const currentTotal = rawProjectsData.length;
+      const percentage = Math.min((currentTotal / targetGoal) * 100, 100);
+
+      const targetText = document.getElementById('target-text');
+      const progressBar = document.getElementById('target-progress-bar');
+
+      if (targetText) targetText.textContent = `${currentTotal} / ${targetGoal} Proyek`;
+      if (progressBar) progressBar.style.width = `${percentage}%`;
       if (!res.ok) throw new Error('Gagal mengambil data proyek');
       return res.json();
     })
