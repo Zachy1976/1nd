@@ -156,3 +156,17 @@ document.addEventListener('DOMContentLoaded', () => {
     ttsBtn.style.display = 'none';
   }
 });
+
+
+//                       DYNAMICS TAB TITLE ON BLUR
+
+let originalTitle = document.title;
+
+window.addEventListener('blur', () => {
+  originalTitle = document.title;
+  document.title = '👋 Hei, balik lagi ke sini!';
+});
+
+window.addEventListener('focus', () => {
+  document.title = originalTitle;
+});
