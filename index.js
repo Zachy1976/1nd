@@ -266,10 +266,8 @@ if (closeModalBtn) {
 }
     });
   });
-});
-
-
-// /DYNAMIC TAB TITLE ON BLUR
+  
+  // /DYNAMIC TAB TITLE ON BLUR
 
 let originalTitle = document.title;
 
@@ -281,3 +279,16 @@ window.addEventListener('blur', () => {
 window.addEventListener('focus', () => {
   document.title = originalTitle;
 });
+
+// Random Project Redirection
+const randomBtn = document.getElementById('random-project-btn');
+if (randomBtn) {
+  randomBtn.addEventListener('click', () => {
+    if (rawProjectsData.length === 0) return;
+    const randomIndex = Math.floor(Math.random() * rawProjectsData.length);
+    const selectedProject = rawProjectsData[randomIndex];
+    window.location.href = `detail.html?id=${selectedProject.id}`;
+  });
+}});
+
+
