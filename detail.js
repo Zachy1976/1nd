@@ -37,6 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return res.json();
     })
     .then((projects) => {
+
+      //  Update Word & Character Count
+const wordCountEl = document.getElementById('word-count');
+const charCountEl = document.getElementById('char-count');
+
+if (wordCountEl) wordCountEl.textContent = `📝 ${fullText.trim().split(/\s+/).length} kata`;
+if (charCountEl) charCountEl.textContent = `🔤 ${fullText.length} karakter`;
+      
       const project = projects.find((p) => String(p.id) === String(projectId));
 
       if (!project) {
