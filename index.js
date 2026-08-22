@@ -291,4 +291,20 @@ if (randomBtn) {
   });
 }});
 
+// FITUR 1: Share dengan Toast
+if (shareBtn) {
+  shareBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const detailUrl = `${window.location.origin}${window.location.pathname.replace('index.html', '')}detail.html?id=${item.id}`;
+
+    navigator.clipboard.writeText(detailUrl);
+    
+    // Tampilkan Toast
+    const indexToast = document.getElementById('index-toast');
+    if (indexToast) {
+      indexToast.classList.remove('hidden');
+      setTimeout(() => { indexToast.classList.add('hidden'); }, 2000);
+    }
+  });
+}
 
