@@ -291,7 +291,7 @@ if (randomBtn) {
   });
 }});
 
-// FITUR 1: Share dengan Toast
+// Share dengan Toast
 if (shareBtn) {
   shareBtn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -308,3 +308,32 @@ if (shareBtn) {
   });
 }
 
+// Highlight Badge Counter Aktif
+function highlightActiveBadge(selectedCategory) {
+  const badgeIds = ['count-all', 'count-web', 'count-tools'];
+  
+  badgeIds.forEach((id) => {
+    const badge = document.getElementById(id);
+    if (badge) {
+      if (id === `count-${selectedCategory}`) {
+        badge.style.background = 'var(--primary-color)';
+        badge.style.color = '#fff';
+      } else {
+        badge.style.background = 'var(--card-border)';
+        badge.style.color = 'var(--text-muted)';
+      }
+    }
+  });
+}
+
+// Panggil fungsi di atas di dalam event listener filterBtns:
+filterBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCategory = btn.getAttribute('data-category');
+    
+    highlightActiveBadge(currentCategory); // <-- PANGGIL DI SINI
+    applyFiltersAndRender();
+  });
+});
