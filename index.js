@@ -337,3 +337,24 @@ filterBtns.forEach((btn) => {
     applyFiltersAndRender();
   });
 });
+
+// Toggle & Action Clear Search Button
+const clearSearchBtn = document.getElementById('clear-search-btn');
+
+if (searchInput && clearSearchBtn) {
+  searchInput.addEventListener('input', (e) => {
+    if (e.target.value.length > 0) {
+      clearSearchBtn.classList.remove('hidden');
+    } else {
+      clearSearchBtn.classList.add('hidden');
+    }
+  });
+
+  clearSearchBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    currentSearchQuery = '';
+    clearSearchBtn.classList.add('hidden');
+    applyFiltersAndRender();
+    searchInput.focus();
+  });
+}
