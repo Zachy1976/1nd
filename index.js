@@ -29,6 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const isLight = document.body.classList.contains('light-theme');
       themeToggleBtn.textContent = isLight ? '☀️' : '🌙';
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      // Set Waktu Load di Footer
+const timeEl = document.getElementById('last-updated-time');
+if (timeEl) {
+  const now = new Date();
+  timeEl.textContent = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
+}
     });
   }
 
