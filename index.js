@@ -3,6 +3,16 @@
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Shortcut Tombol '/' untuk Focus Search
+document.addEventListener('keydown', (e) => {
+  if (e.key === '/' && document.activeElement !== searchInput) {
+    e.preventDefault(); // Mencegah karakter '/' ketik otomatis
+    if (searchInput) {
+      searchInput.focus();
+      searchInput.select();
+    }
+  }
+});
   const container = document.getElementById('project-container');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const searchInput = document.getElementById('search-input');
@@ -300,6 +310,19 @@ if (randomBtn) {
 // Share dengan Toast
 if (shareBtn) {
   shareBtn.addEventListener('click', (e) => {
+
+    //  Ubah Teks Tombol Temporer
+shareBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const detailUrl = `${window.location.origin}${window.location.pathname.replace('index.html', '')}detail.html?id=${item.id}`;
+  
+  navigator.clipboard.writeText(detailUrl);
+
+  // 
+  const originalText = shareBtn.innerHTML;
+  shareBtn.innerHTML = '✅ Copied!';
+  setTimeout(() => { shareBtn.innerHTML = originalText; }, 2000);
+});
     e.stopPropagation();
     const detailUrl = `${window.location.origin}${window.location.pathname.replace('index.html', '')}detail.html?id=${item.id}`;
 
