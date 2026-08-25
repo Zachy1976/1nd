@@ -519,3 +519,13 @@ body.light-theme {
   transform: translate(-50%, 20px);
   pointer-events: none;
 }
+
+/* Custom Text Highlight */
+::selection {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+::-moz-selection {
+  background: var(--primary-color);
+  color: #ffffff;
+}
