@@ -387,3 +387,11 @@ if (searchInput && clearSearchBtn) {
     searchInput.focus();
   });
 }
+
+
+// Console Branding
+console.log(
+  '%c🚀 Welcome to my Portfolio! %cBuilt with JS & CSS',
+  'background: #3b82f6; color: white; font-weight: bold; padding: 4px 8px; border-radius: 4px;',
+  'color: #94a3b8; font-style: italic;'
+);
