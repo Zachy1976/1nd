@@ -538,3 +538,15 @@ body.light-theme {
 .card:hover {
   transform: translateY(-4px) scale(1.01);
 }
+
+/* Card Active Click State */
+.card:active {
+  transform: translateY(-1px) scale(0.98) !important;
+  transition: transform 0.1s ease !important;
+}
+
+/* Native Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
