@@ -550,3 +550,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* FITUR 1: Tech Stack Badge Micro-Interaction */
+.card-footer span {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.card:hover .card-footer span:first-child {
+  transform: translateY(-1px);
+  color: #818cf8 !important;
+}
