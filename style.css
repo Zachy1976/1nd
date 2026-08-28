@@ -566,3 +566,26 @@ html {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
+
+/* Smooth Fade-in Animation on Page Load */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Glassmorphism Input Field Focus Effect */
+input:focus, select:focus {
+  background: var(--card-bg, rgba(30, 41, 59, 0.8)) !important;
+  border-color: var(--primary-color, #6366f1) !important;
+  box-shadow: 0 0 12px var(--primary-glow, rgba(99, 102, 241, 0.2)) !important;
+}
