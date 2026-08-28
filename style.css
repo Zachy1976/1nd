@@ -589,3 +589,19 @@ input:focus, select:focus {
   border-color: var(--primary-color, #6366f1) !important;
   box-shadow: 0 0 12px var(--primary-glow, rgba(99, 102, 241, 0.2)) !important;
 }
+
+/* Card Container Micro-elevation on Hover */
+.project-grid .card {
+  will-change: transform, box-shadow;
+}
+
+.project-grid .card:hover {
+  transform: translateY(-6px) scale(1.005);
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.4), 0 0 16px var(--primary-glow, rgba(99, 102, 241, 0.25));
+}
+
+/* Custom Scrollbar Width and Corner Rounding */
+::-webkit-scrollbar-thumb {
+  border: 2px solid var(--bg-color, #0b0f19);
+  border-radius: 8px;
+}
