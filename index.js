@@ -395,3 +395,24 @@ console.log(
   'background: #3b82f6; color: white; font-weight: bold; padding: 4px 8px; border-radius: 4px;',
   'color: #94a3b8; font-style: italic;'
 );
+
+// Random Ambient Background Accent Movement
+document.addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth) * 100;
+  const y = (e.clientY / window.innerHeight) * 100;
+  document.body.style.backgroundPosition = `${x}% ${y}%`;
+});
+
+// Auto Copy Code Block on Double Click
+document.addEventListener('dblclick', (e) => {
+  if (e.target.tagName === 'CODE' || e.target.closest('pre')) {
+    const text = e.target.textContent;
+    navigator.clipboard.writeText(text);
+    
+    const hint = document.createElement('div');
+    hint.textContent = 'Kode disalin! 📋';
+    hint.style.cssText = 'position:fixed; bottom:20px; right:20px; background:#10b981; color:#fff; padding:6px 12px; border-radius:6px; font-size:12px; z-index:9999;';
+    document.body.appendChild(hint);
+    setTimeout(() => hint.remove(), 1500);
+  }
+});
