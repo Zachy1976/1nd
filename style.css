@@ -605,3 +605,16 @@ input:focus, select:focus {
   border: 2px solid var(--bg-color, #0b0f19);
   border-radius: 8px;
 }
+
+/* Custom Code & Pre Styling */
+pre, code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem;
+}
+
+/* Subtle Interactive Button Scale on Active */
+button:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
