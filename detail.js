@@ -178,3 +178,33 @@ window.addEventListener('blur', () => {
 window.addEventListener('focus', () => {
   document.title = originalTitle;
 });
+
+// Reading Time Estimator for Project Detail
+const projectContent = document.querySelector('.project-description');
+if (projectContent) {
+  const words = projectContent.innerText.trim().split(/\s+/).length;
+  const minutes = Math.ceil(words / 200);
+  const badge = document.createElement('span');
+  badge.className = 'badge';
+  badge.style.cssText = 'font-size: 0.8rem; opacity: 0.8; margin-left: 8px;';
+  badge.textContent = `⏱️ ~${minutes} min baca`;
+  
+  const targetHeader = document.querySelector('.project-header') || projectContent.previousElementSibling;
+  if (targetHeader) targetHeader.appendChild(badge);
+}
+
+// Inactivity Idle Dimmer
+let idleTimer;
+const resetIdle = () => {
+  document.body.style.transition = 'opacity 0.5s ease';
+  document.body.style.opacity = '1';
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => {
+    document.body.style.opacity = '0.7';
+  }, 45000);
+};
+
+['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
+  window.addEventListener(evt, resetIdle);
+});
+resetIdle();
