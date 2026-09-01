@@ -416,3 +416,26 @@ document.addEventListener('dblclick', (e) => {
     setTimeout(() => hint.remove(), 1500);
   }
 });
+
+// Sound Effect Feedback on Card Click
+const clickAudio = new Audio('data:audio/wav;base64,UklGRl9vAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YVNvAABAAAA');
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.card') || e.target.closest('button')) {
+    clickAudio.currentTime = 0;
+    clickAudio.volume = 0.15;
+    clickAudio.play().catch(() => {});
+  }
+});
+
+// Dynamic Greeting based on Time
+const heroTitle = document.querySelector('.hero h1');
+if (heroTitle) {
+  const hour = new Date().getHours();
+  let greeting = 'Selamat Datang';
+  if (hour >= 5 && hour < 11) greeting = 'Selamat Pagi ☕';
+  else if (hour >= 11 && hour < 15) greeting = 'Selamat Siang ☀️';
+  else if (hour >= 15 && hour < 18) greeting = 'Selamat Sore 🌅';
+  else greeting = 'Selamat Malam 🌙';
+
+  heroTitle.textContent = `${greeting}, di Hub Proyek`;
+}
