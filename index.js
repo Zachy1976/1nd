@@ -439,3 +439,29 @@ if (heroTitle) {
 
   heroTitle.textContent = `${greeting}, di Hub Proyek`;
 }
+
+// Reading Progress Percentage Badge in Floating Header
+const pageTitle = document.querySelector('.project-header h1');
+if (pageTitle) {
+  const percentBadge = document.createElement('span');
+  percentBadge.style.cssText = 'font-size:0.75rem; vertical-align:middle; margin-left:10px; padding:2px 8px; border-radius:12px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15);';
+  percentBadge.textContent = '0%';
+  pageTitle.appendChild(percentBadge);
+
+  window.addEventListener('scroll', () => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = Math.min(100, Math.max(0, Math.round((window.scrollY / totalHeight) * 100)));
+    percentBadge.textContent = `${progress}%`;
+  });
+}
+
+// Quick Scroll to Top on Header Click
+const headerEl = document.querySelector('header');
+if (headerEl) {
+  headerEl.style.cursor = 'pointer';
+  headerEl.addEventListener('click', (e) => {
+    if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+}
