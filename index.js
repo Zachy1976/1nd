@@ -465,3 +465,36 @@ if (headerEl) {
     }
   });
 }
+
+// Copy Project Link directly on Right Click / Context Menu on Card
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    const projectTitle = card.querySelector('h2, h3')?.textContent || 'Proyek';
+    const detailUrl = card.querySelector('a')?.href || window.location.href;
+    
+    navigator.clipboard.writeText(detailUrl);
+
+    const toast = document.createElement('div');
+    toast.textContent = `Link "${projectTitle}" disalin! 🔗`;
+    toast.style.cssText = 'position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#3b82f6; color:#fff; padding:8px 16px; border-radius:8px; font-size:13px; font-weight:500; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.3);';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2000);
+  });
+});
+
+// Image Tilt Perspective Effect on Mouse Move
+document.querySelectorAll('.card img').forEach(img => {
+  img.addEventListener('mousemove', (e) => {
+    const rect = img.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    img.style.transform = `perspective(400px) rotateX(${-y / 15}deg) rotateY(${x / 15}deg) scale(1.03)`;
+    img.style.transition = 'transform 0.1s ease-out';
+  });
+
+  img.addEventListener('mouseleave', () => {
+    img.style.transform = 'perspective(400px) rotateX(0deg) rotateY(0deg) scale(1)';
+    img.style.transition = 'transform 0.3s ease';
+  });
+});
