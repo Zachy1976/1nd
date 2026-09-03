@@ -498,3 +498,39 @@ document.querySelectorAll('.card img').forEach(img => {
     img.style.transition = 'transform 0.3s ease';
   });
 });
+
+// Quick Filter Reset on Escape Key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const searchInput = document.getElementById('search-input');
+    const categorySelect = document.getElementById('category-filter');
+    
+    if (searchInput) searchInput.value = '';
+    if (categorySelect) categorySelect.value = 'all';
+    
+    if (typeof applyFiltersAndRender === 'function') {
+      applyFiltersAndRender();
+    }
+  }
+});
+
+// Card Hover Sound Effect using Web Audio API
+const playHoverBeep = () => {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(440, ctx.currentTime);
+    gain.gain.setValueAtTime(0.01, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.05);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.05);
+  } catch (err) {}
+};
+
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mouseenter', playHoverBeep);
+});
